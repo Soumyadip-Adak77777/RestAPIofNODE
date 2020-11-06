@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express=require('express')
 const mongoose=require('mongoose')
 const app=express()
@@ -25,6 +26,22 @@ app.use(express.json())
 const articlesRoutes=require('./routes/articles')
 app.use('/api/articles',articlesRoutes)
 
+
+//routes for users
+const registerRoutes=require('./routes/register')
+app.use('/api/register',registerRoutes)
+
+const loginRoutes=require('./routes/login')
+app.use('/api/login',loginRoutes)
+
+const userRoutes=require('./routes/user')
+app.use('/api/user',userRoutes)
+
+const refreshRoutes=require('./routes/refresh')
+app.use('/api/refresh',refreshRoutes)
+
+const logoutRoutes=require('./routes/logout')
+app.use('/api/logout',logoutRoutes)
 
 
 app.listen(port,(err)=>{
